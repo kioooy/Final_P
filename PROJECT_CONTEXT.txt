@@ -1,0 +1,736 @@
+# PROJECT CONTEXT: TECHZONE AI - FLUTTER TECHNOLOGY E-COMMERCE APPLICATION
+
+[SYSTEM INSTRUCTION]
+
+You are a Senior Flutter Developer, Firebase Architect, Mobile UI/UX Engineer, and Clean Architecture Specialist.
+
+You must follow this PROJECT_CONTEXT for all future code generation.
+
+Before generating any code, analyze the entire PROJECT_CONTEXT and all design files inside the project.
+
+Priority Order:
+
+1. Design Files
+2. PROJECT_CONTEXT
+3. Flutter Best Practices
+
+Do not invent UI styles if the design files already define them.
+
+Generate production-ready Flutter code using Clean Architecture, Provider, Firebase, and modular development principles.
+
+---
+
+# 1. PROJECT OVERVIEW
+
+## Project Name
+
+TechZone AI
+
+## Business Domain
+
+Technology Devices E-Commerce Platform
+
+TechZone AI is a mobile application for selling technology products and electronic devices online.
+
+Customers can browse products, compare specifications, purchase items, locate physical stores using Google Maps, and receive intelligent recommendations from a Gemini AI Shopping Assistant.
+
+---
+
+# 2. TECHNOLOGY STACK
+
+Frontend:
+
+* Flutter
+* Dart
+
+State Management:
+
+* Provider
+
+Backend:
+
+* Firebase Authentication
+* Cloud Firestore
+* Firebase Storage
+
+Maps:
+
+* Google Maps Flutter
+* Geolocator
+* URL Launcher
+
+AI:
+
+* Google Gemini API
+
+Utilities:
+
+* Image Picker
+* Cached Network Image
+
+Architecture:
+
+* Clean Architecture
+* Feature-Based Modular Structure
+
+---
+
+# 3. USER ROLES
+
+## CUSTOMER
+
+Customer can:
+
+* Register account
+* Login account
+* Logout account
+* Browse products
+* Search products
+* Filter products
+* Sort products
+* View product details
+* Add products to cart
+* Update cart quantity
+* Remove products from cart
+* Checkout orders
+* View order history
+* View order status
+* View notifications
+* View store location on Google Maps
+* Chat with AI Shopping Assistant
+* Update personal profile
+
+---
+
+## ADMIN
+
+Admin can:
+
+* Login
+* Logout
+
+Product Management:
+
+* Create products
+* Update products
+* Delete products
+
+Category Management:
+
+* Create categories
+* Update categories
+* Delete categories
+
+Order Management:
+
+* View all orders
+* Update order status
+
+Notification Management:
+
+* Create notifications
+* Manage promotions
+
+Store Management:
+
+* Update store location
+
+User Management:
+
+* View customer accounts
+
+Dashboard:
+
+* View total users
+* View total orders
+* View total revenue
+
+---
+
+# 4. PRODUCT CATEGORIES
+
+The system manages technology products including:
+
+* Smartphones
+* Laptops
+* Tablets
+* Smartwatches
+* Headphones
+* Keyboards
+* Mice
+* Monitors
+* Gaming Accessories
+* PC Components
+* Storage Devices
+* Networking Devices
+
+---
+
+# 5. FIRESTORE DATABASE DESIGN
+
+## Collection: users
+
+Fields:
+
+* uid
+* fullName
+* email
+* phone
+* address
+* role
+* profileImage
+* createdAt
+
+---
+
+## Collection: categories
+
+Fields:
+
+* categoryId
+* categoryName
+* imageUrl
+
+---
+
+## Collection: products
+
+Fields:
+
+* productId
+* name
+* brand
+* categoryId
+* categoryName
+* description
+* price
+* stock
+* imageUrl
+* rating
+* warranty
+* specifications
+* createdAt
+
+Example Specifications:
+
+{
+"CPU": "Intel Core i7",
+"RAM": "16GB",
+"Storage": "512GB SSD",
+"Display": "15.6 inch"
+}
+
+---
+
+## Collection: carts
+
+Fields:
+
+* cartId
+* userId
+* productId
+* quantity
+
+---
+
+## Collection: orders
+
+Fields:
+
+* orderId
+* userId
+* products
+* totalAmount
+* shippingAddress
+* paymentMethod
+* status
+* createdAt
+
+Order Status:
+
+* Pending
+* Processing
+* Shipping
+* Delivered
+* Cancelled
+
+---
+
+## Collection: notifications
+
+Fields:
+
+* notificationId
+* title
+* content
+* createdAt
+
+---
+
+## Collection: stores
+
+Fields:
+
+* storeId
+* storeName
+* latitude
+* longitude
+* address
+
+---
+
+## Collection: chat_history
+
+Fields:
+
+* messageId
+* userId
+* role
+* message
+* timestamp
+
+---
+
+# 6. MAIN FEATURES
+
+## MODULE 1: DATABASE & FIREBASE
+
+Requirements:
+
+* Firestore Collections
+* Repository Pattern
+* CRUD Operations
+* Firebase Integration
+
+Collections:
+
+* users
+* categories
+* products
+* carts
+* orders
+* notifications
+* stores
+* chat_history
+
+---
+
+## MODULE 2: AUTHENTICATION
+
+Screens:
+
+* Splash Screen
+* Login Screen
+* Register Screen
+* Forgot Password Screen
+
+Requirements:
+
+* Firebase Authentication
+* Email/Password Login
+* Role-Based Navigation
+
+Customer Login:
+→ Customer Home
+
+Admin Login:
+→ Admin Dashboard
+
+---
+
+## MODULE 3: PRODUCT LIST SCREEN
+
+Features:
+
+* Product Grid View
+* Search Bar
+* Category Filter
+* Price Filter
+* Brand Filter
+* Rating Filter
+
+Sorting:
+
+* Lowest Price
+* Highest Price
+* Highest Rating
+* Newest Products
+
+Display:
+
+* Product Image
+* Product Name
+* Brand
+* Price
+* Rating
+
+---
+
+## MODULE 4: PRODUCT DETAIL SCREEN
+
+Display:
+
+* Product Image
+* Product Name
+* Brand
+* Product Description
+* Specifications
+* Warranty
+* Price
+* Stock
+* Rating
+
+Features:
+
+* Add To Cart
+* Buy Now
+
+---
+
+## MODULE 5: SHOPPING CART SCREEN
+
+Features:
+
+* View Cart Items
+* Increase Quantity
+* Decrease Quantity
+* Remove Product
+* Calculate Total Price
+
+---
+
+## MODULE 6: CHECKOUT & BILLING SCREEN
+
+Features:
+
+* Shipping Information
+* Order Summary
+* Mock Payment
+* Place Order
+
+Requirements:
+
+* Save Orders To Firestore
+* Generate Invoice Information
+
+---
+
+## MODULE 7: NOTIFICATIONS SCREEN
+
+Customer:
+
+* View Promotions
+* View Order Updates
+
+Admin:
+
+* Create Notifications
+* Manage Notifications
+
+---
+
+## MODULE 8: GOOGLE MAPS SCREEN
+
+Title:
+
+Store Location
+
+Concept:
+
+Google Maps is integrated into the mobile application to help customers locate physical stores and navigate to them.
+
+Packages:
+
+* google_maps_flutter
+* geolocator
+* url_launcher
+
+Customer Features:
+
+* View Store Marker
+* View Current Location
+* View Store Information
+* Calculate Distance To Store
+* Open Google Maps Navigation
+
+Admin Features:
+
+* Update Store Coordinates
+* Update Store Address
+
+Demo Requirements:
+
+1. Open Map Screen
+2. Display Store Marker
+3. Display User Location
+4. Show Store Information
+5. Click Navigate Button
+6. Open Google Maps Navigation
+
+---
+
+## MODULE 9: AI SHOPPING ASSISTANT
+
+Technology:
+
+Google Gemini API
+
+Role:
+
+Gemini acts as a Technology Product Consultant.
+
+Features:
+
+* Real-Time Chat
+* Typing Indicator
+* Streaming Responses
+* Chat History Storage
+* Product Recommendations
+* Product Comparison
+* Shopping Advice
+* FAQ Support
+
+Example Questions:
+
+* Recommend a laptop under $1000
+* Compare iPhone 15 and Samsung S24
+* Best gaming mouse under $50
+* Which laptop is suitable for programming?
+
+---
+
+## MODULE 10: STATE MANAGEMENT
+
+All application state must be managed using Provider.
+
+Providers:
+
+### AuthProvider
+
+Responsibilities:
+
+* Login
+* Register
+* Logout
+* User Session
+
+### ProductProvider
+
+Responsibilities:
+
+* Product List
+* Search
+* Filter
+* Product CRUD
+
+### CartProvider
+
+Responsibilities:
+
+* Cart Operations
+* Total Calculation
+
+### OrderProvider
+
+Responsibilities:
+
+* Order Management
+
+### NotificationProvider
+
+Responsibilities:
+
+* Notification Management
+
+### MapProvider
+
+Responsibilities:
+
+* Store Location
+* User Location
+* Distance Calculation
+
+### ChatProvider
+
+Responsibilities:
+
+* Gemini Communication
+* Chat History
+* Typing State
+
+### UserProvider
+
+Responsibilities:
+
+* Profile Management
+
+---
+
+# 7. APPLICATION FLOW
+
+Splash Screen
+
+↓
+
+Login / Register
+
+↓
+
+Customer Home
+
+├── Product List
+├── Product Detail
+├── Cart
+├── Checkout
+├── Notifications
+├── Google Maps
+├── AI Chat
+├── Profile
+└── Order History
+
+↓
+
+Order Success
+
+---
+
+Admin Login
+
+↓
+
+Admin Dashboard
+
+├── Product Management
+├── Category Management
+├── Order Management
+├── User Management
+├── Notification Management
+├── Store Management
+└── Revenue Dashboard
+
+---
+
+# 8. CLEAN ARCHITECTURE FOLDER STRUCTURE
+
+lib/
+
+core/
+├── constants/
+├── routes/
+├── services/
+├── theme/
+├── utils/
+
+features/
+
+├── auth/
+├── categories/
+├── products/
+├── cart/
+├── orders/
+├── notifications/
+├── maps/
+├── chat/
+├── profile/
+├── admin/
+
+Each feature contains:
+
+data/
+├── models/
+├── repositories/
+├── datasources/
+
+domain/
+├── entities/
+├── repositories/
+
+presentation/
+├── providers/
+├── screens/
+├── widgets/
+
+main.dart
+
+---
+
+# 9. UI DESIGN REQUIREMENTS
+
+Theme:
+
+Primary Color:
+Orange
+
+Secondary Color:
+White
+
+Style:
+
+* Modern
+* Clean
+* Responsive
+* Material Design 3
+
+Customer UI:
+
+* Bottom Navigation Bar
+* Product Grid Layout
+
+Admin UI:
+
+* Dashboard Layout
+* Management Tables
+
+---
+
+# 10. BONUS FEATURES
+
+* Wishlist
+* Product Reviews
+* Product Ratings
+* Product Comparison
+* Dark Mode
+* Revenue Dashboard
+* Order Tracking Timeline
+* Firebase Push Notifications
+* AI Personalized Recommendations
+
+---
+
+# 11. IMPORTANT DESIGN INSTRUCTION
+
+A design folder exists inside the project.
+
+Before generating any UI:
+
+1. Analyze all design files.
+2. Extract colors.
+3. Extract typography.
+4. Extract spacing system.
+5. Extract reusable components.
+6. Extract layout patterns.
+
+Generate Flutter widgets and screens that strictly follow the provided design system.
+
+Do not create new UI styles if the design files already define them.
+
+---
+
+# 12. DEVELOPMENT RULES
+
+Before generating code:
+
+1. Analyze PROJECT_CONTEXT.
+2. Analyze all design files.
+3. Generate architecture plan.
+4. Generate folder structure.
+5. Generate Firebase setup.
+6. Generate models and repositories.
+7. Generate providers.
+8. Generate screens.
+9. Integrate Google Maps.
+10. Integrate Gemini AI.
+
+Always prioritize maintainability, scalability, and clean code principles.
+
+END OF PROJECT_CONTEXT

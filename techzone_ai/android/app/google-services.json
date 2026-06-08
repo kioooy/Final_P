@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "342289574852",
+    "project_id": "techzone-84481",
+    "storage_bucket": "techzone-84481.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:342289574852:android:d9f7b91b333f7f9faf9291",
+        "android_client_info": {
+          "package_name": "com.techzone.techzone_ai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD44wSR_i7YRNz5jVKXU_abk8QH3EXtAiI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
